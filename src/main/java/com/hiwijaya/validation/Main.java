@@ -1,21 +1,19 @@
 package com.hiwijaya.validation;
 
 
-import javax.validation.ConstraintViolation;
-import javax.validation.Validation;
-import javax.validation.Validator;
-import javax.validation.ValidatorFactory;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import java.time.LocalDate;
 import java.time.Month;
-import java.util.Date;
-import java.util.Set;
 
 /**
  * @author Happy Indra Wijaya
  */
 public class Main {
 
-    private void basicValidation(){
+
+
+    public static void main(String[] args) {
 
         Person person = Person.builder()
                 .name("Happy Indra Wijaya")
@@ -25,33 +23,17 @@ public class Main {
                 .working(false)
                 .build();
 
-        //Create ValidatorFactory which returns validator
-        ValidatorFactory factory = Validation.buildDefaultValidatorFactory();
+        ApplicationContext context = new AnnotationConfigApplicationContext(Config.class);
+        ValidationService validationService = context.getBean(ValidationService.class);
 
-        //It validates bean instances
-        Validator validator = factory.getValidator();
-
-        //Validate bean
-        Set<ConstraintViolation<Person>> constraintViolations = validator.validate(person);
-
-        //Show errors
-        if (constraintViolations.size() > 0) {
-            for (ConstraintViolation<Person> violation : constraintViolations) {
-                System.out.println(violation.getMessage());
-            }
-        } else {
-            System.out.println("Valid Object");
+        //boolean isValid = validationService.basicValidate(person);
+        boolean isValid = validationService.springValidate(person);
+        if(isValid){
+            System.out.println("Object valid");
         }
-
-
-    }
-
-    public static void main(String[] args) {
-
-        Main main = new Main();
-
-        main.basicValidation();
-
+        else{
+            System.out.println("Object not valid");
+        }
 
 
     }
