@@ -1,5 +1,6 @@
 package com.hiwijaya.validation;
 
+import com.hiwijaya.validation.custom.IpAddress;
 import lombok.Builder;
 
 import javax.validation.constraints.*;
@@ -26,7 +27,10 @@ public class Input {
     @Past(message = "birthday is past")
     private LocalDate birthDay;    // should use LocalDate instead of old java.util.Date
 
-    @AssertTrue(message = "You should have a job.")
+    @AssertTrue(message = "You should do something")
     private boolean working;
+
+    @IpAddress(message = "Invalid IP address")
+    private String ipAddress;
 
 }
