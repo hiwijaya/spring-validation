@@ -9,7 +9,7 @@ import java.time.LocalDate;
  * @author Happy Indra Wijaya
  */
 @Builder
-public class Person {
+public class Input {
 
     @Size(min = 3, message = "Invalid name")
     @NotEmpty(message = "Name cannot be empty")
@@ -28,6 +28,5 @@ public class Person {
 
     @AssertTrue(message = "You should have a job.")
     private boolean working;
-
 
 }

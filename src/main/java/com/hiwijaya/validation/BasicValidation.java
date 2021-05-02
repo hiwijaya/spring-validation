@@ -33,17 +33,17 @@ public class BasicValidation {
 
         // TODO: move it to unit test.
 
-        Person person = Person.builder()
+        Input input = Input.builder()
                 .name("Happy Indra Wijaya")
                 .email("me@hiwijaya.com")
-                .age(23)
+                .age(12)
                 .birthDay(LocalDate.of(1992, Month.JULY, 10))
                 .working(true)
                 .build();
 
         BasicValidation validation = new BasicValidation();
 
-        if(validation.isValid(person)){
+        if(validation.isValid(input)){
             System.out.println("Object valid");
         }
 
