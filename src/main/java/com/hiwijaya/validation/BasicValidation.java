@@ -10,7 +10,6 @@ import java.util.Set;
  */
 public class BasicValidation {
 
-
     public <B> boolean isValid(B b){
 
         //Create ValidatorFactory which returns validator
@@ -26,27 +25,6 @@ public class BasicValidation {
         }
 
         return true;
-    }
-
-
-    public static void main(String[] args) {
-
-        // TODO: move it to unit test.
-
-        Input input = Input.builder()
-                .name("Happy Indra Wijaya")
-                .email("me@hiwijaya.com")
-                .age(12)
-                .birthDay(LocalDate.of(1992, Month.JULY, 10))
-                .working(true)
-                .build();
-
-        BasicValidation validation = new BasicValidation();
-
-        if(validation.isValid(input)){
-            System.out.println("Object valid");
-        }
-
     }
 
 }
