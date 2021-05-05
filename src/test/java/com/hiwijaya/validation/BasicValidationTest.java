@@ -13,7 +13,7 @@ import java.time.Month;
 @DisplayName("Basic Validation Test")
 public class BasicValidationTest {
 
-    private BasicValidation basicValidation = new BasicValidation();
+    final BasicValidation basicValidation = new BasicValidation();
 
     @Test
     public void testValidateSuccess(){
@@ -38,15 +38,30 @@ public class BasicValidationTest {
         Input input = Input.builder()
                 .name("Happy Indra Wijaya")
                 .email("me@hiwijaya.com")
-                .age(17)
+                .age(16)
                 .birthDay(LocalDate.of(1992, Month.JULY, 10))
                 .working(true)
                 .ipAddress("192.168.0.1")
                 .build();
 
         var result = basicValidation.isValid(input);
-        assertTrue(result);
+        assertFalse(result);
+    }
 
+    @Test
+    public void testCustomValidateFailed(){
+
+        Input input = Input.builder()
+                .name("Happy Indra Wijaya")
+                .email("me@hiwijaya.com")
+                .age(29)
+                .birthDay(LocalDate.of(1992, Month.JULY, 10))
+                .working(true)
+                .ipAddress("1992.168.0.0")
+                .build();
+
+        var result = basicValidation.isValid(input);
+        assertFalse(result);
     }
 
 
