@@ -6,7 +6,7 @@ import java.util.Set;
 /**
  * @author Happy Indra Wijaya
  */
-public class BasicValidation {
+public class BasicValidator {
 
     public <B> boolean isValid(B b){
 

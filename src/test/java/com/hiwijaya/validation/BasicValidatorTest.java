@@ -11,9 +11,9 @@ import java.time.Month;
  * @author Happy Indra Wijaya
  */
 @DisplayName("Basic Validation Test")
-public class BasicValidationTest {
+public class BasicValidatorTest {
 
-    final BasicValidation basicValidation = new BasicValidation();
+    final BasicValidator validator = new BasicValidator();
 
     @Test
     public void testValidateSuccess(){
@@ -27,7 +27,7 @@ public class BasicValidationTest {
                 .ipAddress("192.168.0.1")
                 .build();
 
-        var result = basicValidation.isValid(input);
+        var result = validator.isValid(input);
         assertTrue(result);
 
     }
@@ -44,7 +44,7 @@ public class BasicValidationTest {
                 .ipAddress("192.168.0.1")
                 .build();
 
-        var result = basicValidation.isValid(input);
+        var result = validator.isValid(input);
         assertFalse(result);
     }
 
@@ -60,7 +60,7 @@ public class BasicValidationTest {
                 .ipAddress("1992.168.0.0")
                 .build();
 
-        var result = basicValidation.isValid(input);
+        var result = validator.isValid(input);
         assertFalse(result);
     }
 

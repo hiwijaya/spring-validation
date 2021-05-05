@@ -19,7 +19,7 @@ public class Input {
     @Email(message = "Please input a valid format email")
     private String email;
 
-    @Max(value = 50, message = "Age should not be greater than 50")
+    @Max(value = 50, message = "Age should not be greater than {value}")
     @Min(value = 17, message = "Age should not be less than 17")
     @Positive
     private int age;
